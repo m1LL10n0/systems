@@ -5,7 +5,7 @@
 #include <sys/time.h>
 #include <math.h>
 #include <stdlib.h>
-
+#include <time.h>
 
 #define THREADSNUM 4
 #define QUEUESIZE 10
@@ -24,7 +24,7 @@ struct workFunction
     void * (*work)(void *);
     void * arg;
     time_t seconds;
-    suseconds_t useconds;
+    long useconds;
 };
 
 typedef struct
@@ -233,6 +233,7 @@ void queueDel (queue *q, struct workFunction *out)
 
     return;
 }
+
 
 void* randomFunction(void *ptr)
 {
